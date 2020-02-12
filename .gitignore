@@ -2,3 +2,5 @@
 /.vscode
 /Shared/obj
 /Client/obj
+/Shared/bin
+/Client/bin
