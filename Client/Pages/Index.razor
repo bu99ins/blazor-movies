@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BlazorMovies.Client.Helpers
 
 <p>Hello @StringUtilities.CustomToUpper(name)</p>
 <p>Let's play 2 + 2 = @(2 + 2)</p>
@@ -7,11 +8,6 @@
 
 @code {
     string name = "Julia";
-
-    public class StringUtilities
-    {
-        public static string CustomToUpper(string value) => value.ToUpper();
-    }
 
     void WriteInLog()
     {
