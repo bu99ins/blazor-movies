@@ -5,8 +5,20 @@
 
 <button @onclick="WriteInLog">Click me</button>
 
+<div>
+    <h3>Movie</h3>
+    <p>Title: <b>@spiderman.Title</b></p>
+    <p>Release Date: <b>@spiderman.ReleaseDate.ToString("dd MMM yyyy")</b></p>
+</div>
+
 @code {
     string name = "Julia";
+
+    Movie spiderman = new Movie
+    {
+        Title = "Spider-Man: Far From Home",
+        ReleaseDate = new DateTime(2019, 7, 2)
+    };
 
     void WriteInLog()
     {
