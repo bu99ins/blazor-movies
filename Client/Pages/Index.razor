@@ -7,11 +7,20 @@
 
 <div>
     <h3>Movie</h3>
-    @foreach (var movie in movies)
+
+    @if(movies == null)
     {
-    <p>Title: <b>@movie.Title</b></p>
-    <p>Release Date: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>        
+        <text>Loadin…</text>
     }
+    else
+    {
+        @foreach (var movie in movies)
+        {
+        <p>Title: <b>@movie.Title</b></p>
+        <p>Release Date: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>        
+        }        
+    }
+
 </div>
 
 @code {
@@ -19,8 +28,10 @@
 
     List<Movie> movies;
 
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
+        await Task.Delay(3000);
+
         movies = new List<Movie>
         {
             new Movie { Title = "Spider-Man: Far From Home", ReleaseDate = new DateTime(2019, 7, 2) },
