@@ -8,12 +8,16 @@ else if (Movies.Count == 0)
 }
 else
 {
+    <input type="checkbox" @onchange="() => displayButtons = !displayButtons" />
+
     @foreach (var movie in Movies)
     {
-        <IndividualMovie Movie="movie" />
+        <IndividualMovie Movie="movie" DisplayButtons="displayButtons" />
     }        
 }
 
 @code {
     [Parameter] public List<Movie> Movies { get; set; }
+
+    bool displayButtons = false;
 }

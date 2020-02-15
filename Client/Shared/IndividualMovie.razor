@@ -2,7 +2,7 @@
         <p>Title: @(Movie.Title)</p>
         <p>Release Date: <b>@Movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>
 
-        if (DispalyButtons)
+        @if (DisplayButtons)
         {
             <div>
                 <button @onclick="Delete">Delete</button>
