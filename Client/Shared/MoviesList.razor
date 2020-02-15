@@ -1,14 +1,14 @@
-@if(movies == null)
+@if(Movies == null)
 {
-    <text>Loadin…</text>
+    <text>Loading…</text>
 }
-else if (movies.Count == 0)
+else if (Movies.Count == 0)
 {
     <text>There are no records to show</text>
 }
 else
 {
-    @foreach (var movie in movies)
+    @foreach (var movie in Movies)
     {
         <p>Title: @(movie.Title)</p>
         <p>Release Date: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>        
@@ -16,15 +16,5 @@ else
 }
 
 @code {
-    List<Movie> movies;
-
-    protected override void OnInitialized()
-    {
-        movies = new List<Movie>
-        {
-            new Movie { Title = "Spider-Man: Far From Home", ReleaseDate = new DateTime(2019, 7, 2) },
-            new Movie { Title = "Moana", ReleaseDate = new DateTime(2016, 11, 23) },
-            new Movie { Title = "Inception", ReleaseDate = new DateTime(2010, 7, 16) }
-        };
-    }
+    [Parameter] public List<Movie> Movies { get; set; }
 }
