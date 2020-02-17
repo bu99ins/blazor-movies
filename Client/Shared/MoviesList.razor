@@ -1,41 +1,13 @@
-<div>
-    @if(Movies == null)
-    {
-        if (@LoadingTemplate == null)
-        {
-            <text>Loading…</text>
-        }
-        else
-        {
-            @LoadingTemplate
-        }
-    }
-    else if (Movies.Count == 0)
-    {
-        if (@EmptyTemplate == null)
-        {
-            <text>There are no records to show</text>
-        }
-        else
-        {
-            @EmptyTemplate
-        }
-    }
-    else
-    {
-        <input type="checkbox" @bind="displayButtons" />
+<input type="checkbox" @bind="displayButtons" />
 
-        @foreach (var movie in Movies)
-        {
-            <IndividualMovie Movie="movie" DisplayButtons="displayButtons" DeleteMovie="DeleteMovie" />
-        }        
-    }
-</div>
+<GenericList List="Movies">
+    <ElementTemplate Context="movie">
+        <IndividualMovie Movie="movie" DisplayButtons="displayButtons" DeleteMovie="DeleteMovie" />
+    </ElementTemplate>
+</GenericList>
 
 @code {
     [Parameter] public List<Movie> Movies { get; set; }
-    [Parameter] public RenderFragment LoadingTemplate { get; set; }
-    [Parameter] public RenderFragment EmptyTemplate { get; set; }
 
     bool displayButtons = false;
 

@@ -1,0 +1,28 @@
+@typeparam TItem
+
+@if(List == null)
+{
+    if (@LoadingTemplate == null)
+    {
+        <text>Loading…</text>
+    }
+    else @LoadingTemplate
+}
+else if (List.Count == 0)
+{
+    if (@EmptyTemplate == null)
+    {
+        <text>There are no records to show</text>
+    }
+    else @EmptyTemplate
+}
+else
+    @foreach (var element in List) @ElementTemplate(element)
+
+
+@code {
+    [Parameter] public RenderFragment LoadingTemplate { get; set; }
+    [Parameter] public RenderFragment EmptyTemplate { get; set; }
+    [Parameter] public RenderFragment<TItem> ElementTemplate { get; set; }
+    [Parameter] public List<TItem> List { get; set; }
+}
