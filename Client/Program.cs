@@ -14,6 +14,9 @@ namespace BlazorMovies.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
+            builder.Services.AddSingleton<SingletonService>();
+            builder.Services.AddTransient<TransientService>();
+
             await builder.Build().RunAsync();
         }
     }
