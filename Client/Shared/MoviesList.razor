@@ -1,18 +1,25 @@
 <div>
     @if(Movies == null)
     {
-        if (@ChildContent == null)
+        if (@LoadingTemplate == null)
         {
             <text>Loading…</text>
         }
         else
         {
-            @ChildContent
+            @LoadingTemplate
         }
     }
     else if (Movies.Count == 0)
     {
-        <text>There are no records to show</text>
+        if (@EmptyTemplate == null)
+        {
+            <text>There are no records to show</text>
+        }
+        else
+        {
+            @EmptyTemplate
+        }
     }
     else
     {
@@ -27,7 +34,8 @@
 
 @code {
     [Parameter] public List<Movie> Movies { get; set; }
-    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public RenderFragment LoadingTemplate { get; set; }
+    [Parameter] public RenderFragment EmptyTemplate { get; set; }
 
     bool displayButtons = false;
 
