@@ -1,23 +1,33 @@
-@if(Movies == null)
-{
-    <text>Loading…</text>
-}
-else if (Movies.Count == 0)
-{
-    <text>There are no records to show</text>
-}
-else
-{
-    <input type="checkbox" @bind="displayButtons" />
-
-    @foreach (var movie in Movies)
+<div>
+    @if(Movies == null)
     {
-        <IndividualMovie Movie="movie" DisplayButtons="displayButtons" DeleteMovie="DeleteMovie" />
-    }        
-}
+        if (@ChildContent == null)
+        {
+            <text>Loading…</text>
+        }
+        else
+        {
+            @ChildContent
+        }
+    }
+    else if (Movies.Count == 0)
+    {
+        <text>There are no records to show</text>
+    }
+    else
+    {
+        <input type="checkbox" @bind="displayButtons" />
+
+        @foreach (var movie in Movies)
+        {
+            <IndividualMovie Movie="movie" DisplayButtons="displayButtons" DeleteMovie="DeleteMovie" />
+        }        
+    }
+</div>
 
 @code {
     [Parameter] public List<Movie> Movies { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
 
     bool displayButtons = false;
 

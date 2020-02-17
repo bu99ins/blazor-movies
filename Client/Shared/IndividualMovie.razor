@@ -5,7 +5,7 @@
         @if (DisplayButtons)
         {
             <div>
-                <button @onclick="() => DeleteMovie.InvokeAsync(Movie)">Delete</button>
+                <button @onclick="@(() => DeleteMovie.InvokeAsync(Movie))">Delete</button>
             </div>
         }
 </div>
