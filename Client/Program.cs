@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.AspNetCore.Blazor.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
+using BlazorMovies.Client.Helpers;
+
 namespace BlazorMovies.Client
 {
     public class Program
@@ -16,6 +18,7 @@ namespace BlazorMovies.Client
 
             builder.Services.AddSingleton<SingletonService>();
             builder.Services.AddTransient<TransientService>();
+            builder.Services.AddTransient<IRepository, RepositoryInMemory>();
 
             await builder.Build().RunAsync();
         }
