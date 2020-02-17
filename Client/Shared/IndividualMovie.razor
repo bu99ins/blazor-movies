@@ -1,13 +1,13 @@
 <div>
-        <p>Title: @(Movie.Title)</p>
-        <p>Release Date: <b>@Movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>
+    <p>Title: @(Movie.Title)</p>
+    <p>Release Date: <b>@Movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>
 
-        @if (DisplayButtons)
-        {
-            <div>
-                <button @onclick="@(() => DeleteMovie.InvokeAsync(Movie))">Delete</button>
-            </div>
-        }
+    @if (DisplayButtons)
+    {
+        <div>
+            <button @onclick="@(() => DeleteMovie.InvokeAsync(Movie))">Delete</button>
+        </div>
+    }
 </div>
 
 @code {
